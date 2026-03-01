@@ -1,30 +1,26 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BURNING CLOUD NIGHT 火烧云之夜</title>
+    <title>BURNING CLOUD NIGHT</title>
+
     <style>
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            font-family: Segoe UI,Arial,sans-serif;
+            background: linear-gradient(180deg,#1a1a2e,#16213e);
             color: white;
             text-align: center;
         }
 
         header {
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 10px;
-        }
-
-        h2 {
-            font-weight: normal;
-            color: #ff944d;
         }
 
         .container {
@@ -33,104 +29,160 @@
             padding: 20px;
         }
 
-        .description {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-top: 30px;
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
+        .box {
+            background: rgba(255,255,255,0.06);
+            padding: 25px;
             border-radius: 12px;
+            margin-top: 30px;
         }
 
-        .download-section {
-            margin-top: 50px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin: 15px;
-            padding: 15px 35px;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: 0.3s;
+        button {
+            margin: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
             font-weight: bold;
         }
 
-        .btn-android {
-            background: #3ddc84;
-            color: black;
-        }
-
-        .btn-ios {
-            background: #ffffff;
-            color: black;
-        }
-
-        .btn-windows {
-            background: #0078d7;
-            color: white;
-        }
-
-        .btn-web {
+        .lang-btn {
             background: #ff944d;
             color: white;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
-            opacity: 0.85;
+        .download-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            background: #3ddc84;
+            color: black;
         }
 
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 20px;
-            font-size: 14px;
             opacity: 0.6;
+            font-size: 14px;
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>BURNING CLOUD NIGHT</h1>
-        <h2>火烧云之夜</h2>
+        <h1 id="title">BURNING CLOUD NIGHT</h1>
+        <div>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh-hant')">繁</button>
+            <button class="lang-btn" onclick="setLang('zh-hans')">简</button>
+            <button class="lang-btn" onclick="setLang('vi')">VI</button>
+            <button class="lang-btn" onclick="setLang('ja')">JP</button>
+        </div>
     </header>
 
     <div class="container">
 
-        <div class="description">
-            <p>
-                BCN 是 Fire Cloud Studio 火云工作室 以
-                跳舞的线 Dancing Line 蓝本所做的饭制合集。
-            </p>
-
-            <p>
-                原作：Cheetah Mobile Inc、BoomBit Inc.
-            </p>
-
-            <p>
-                闯向各个关卡探索游戏的魅力，
-                我们将持续制作以及收录更多优质饭制关卡作品。
-            </p>
+        <div class="box">
+            <p id="description"></p>
         </div>
 
-        <div class="download-section">
-            <h2>下載遊戲</h2>
+        <div class="box">
+            <h2>Release Notes</h2>
+            <p id="release"></p>
+        </div>
 
-            <a href="#" class="btn btn-android">Android 下載</a>
-            <a href="#" class="btn btn-ios">iOS 下載</a>
-            <a href="#" class="btn btn-windows">Windows 下載</a>
-            <a href="#" class="btn btn-uwp">Windows 下載</a>
-            <a href="#" class="btn btn-web">Web 版遊玩</a>
+        <div class="box">
+            <h2>Download</h2>
+            <a href="#" class="download-btn">Android</a>
+            <a href="#" class="download-btn">iOS</a>
+            <a href="#" class="download-btn">Windows</a>
+            <a href="#" class="download-btn">Web</a>
         </div>
 
     </div>
 
-    <footer>
-        © 2026 Fire Cloud Studio 火云工作室
-        本作品为非商业饭制作品，与原作公司无商业合作或隶属关系。
-    </footer>
+    <footer id="studio"></footer>
+
+    <script>
+        const data = {
+
+        "en":{
+        title:"BURNING CLOUD NIGHT",
+        description:`BURNING CLOUD NIGHT (BCN) is a fan-made collection based on Dancing Line by Fire Cloud Studio.
+        Go through each level to explore the charm of the game.
+        We will continue to produce and include more high-quality fan-made levels.`,
+        release:`1.4.1
+        1. Fixed an issue where the player would die immediately after revival
+        2. Added anti-aliasing
+        3. Updated the UI
+        4. Fixed an auto-login error`,
+        studio:"© Fire Cloud Studio"
+        },
+
+        "zh-hant":{
+        title:"火燒雲之夜 BURNING CLOUD NIGHT",
+        description:`BURNING CLOUD NIGHT (簡稱BCN) 是Fire Cloud Studio火雲工作室以跳舞的線Dancing Line為藍本所做的飯制合集。
+        闖向各個關卡探索遊戲的魅力，我們將持續製作以及收錄更多優質飯製關卡作品。`,
+        release:`1.4.1
+        1. 修正復活後瞬間死亡的問題
+        2. 加入反鋸齒
+        3. 修改UI介面
+        4. 修復自動登入錯誤`,
+        studio:"© 火雲工作室"
+        },
+
+        "zh-hans":{
+        title:"火烧云之夜 BURNING CLOUD NIGHT",
+        description:`BURNING CLOUD NIGHT (BCN) 是Fire Cloud Studio火云工作室以跳舞的线Dancing Line为蓝本所做的饭制合集。
+        闯向各个关卡探索游戏的魅力，我们将持续制作以及收录更多优质饭制关卡作品。`,
+        release:`1.4.1
+        1. 修复复活后瞬间死亡的问题
+        2. 加入抗锯齿
+        3. 更新UI界面
+        4. 修复自动登录错误`,
+        studio:"© 火云工作室"
+        },
+
+        "vi":{
+        title:"BURNING CLOUD NIGHT",
+        description:`BURNING CLOUD NIGHT (BCN) là một tựa game Dancing Line Fanmade của Fire Cloud Studio.
+        Hãy vượt qua từng màn chơi để khám phá sức hấp dẫn của trò chơi.
+        Chúng tôi sẽ tiếp tục tạo và bổ sung thêm nhiều màn chơi fanmade chất lượng cao.`,
+        release:`1.4.1
+        1. Sửa lỗi mà người chơi chết lập tức sau khi hồi sinh
+        2. Đã thêm tính năng Khử răng cưa
+        3. Đã cập nhật giao diện
+        4. Đã sửa lỗi tự động đăng nhập`,
+        studio:"© Fire Cloud Studio"
+        },
+
+        "ja":{
+        title:"火焼雲の夜 BURNING CLOUD NIGHT",
+        description:`火焼雲の夜(BURNING CLOUD NIGHT) は、Dancing Line をベースにした 火雲スタジオによるファンメイドのコレクションです。
+        各レベルをクリアして、ゲームの魅力を探求してください。
+        今後も、より高品質なファンメイドレベルを制作し、収録していきます。`,
+        release:`1.4.1
+        1. 復活後に即死してしまう問題を修正
+        2. アンチエイリアスを追加
+        3. UIを更新
+        4. 自動ログインの不具合を修正`,
+        studio:"© 火雲スタジオ"
+        }
+
+        };
+
+        function setLang(lang){
+        document.getElementById("title").innerText = data[lang].title;
+        document.getElementById("description").innerText = data[lang].description;
+        document.getElementById("release").innerText = data[lang].release;
+        document.getElementById("studio").innerText = data[lang].studio;
+        }
+
+        setLang("en");
+    </script>
 
 </body>
 </html>
