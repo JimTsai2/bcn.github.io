@@ -55,7 +55,6 @@
             flex-direction: column;
             width: 100%;
             max-width: 300px;
-            gap: 12px;
         }
 
         .download-btn {
@@ -66,7 +65,12 @@
             color: white;
             text-align: center;
             transition: opacity .3s;
+            margin-top: 10px;
         }
+
+            .download-btn:first-child {
+                margin-top: 0;
+            }
 
             .download-btn:hover {
                 opacity: .9;
