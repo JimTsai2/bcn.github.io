@@ -6,36 +6,37 @@
     <title>Download BURNING CLOUD NIGHT</title>
 
     <style>
+
         body {
             margin: 0;
-            font-family: Segoe UI, Arial, sans-serif;
-            background: #000000;
+            font-family: Segoe UI,Arial,sans-serif;
+            background: #000;
             color: white;
             text-align: center;
         }
 
         header {
-            position: relative;
-            padding: 40px 20px 10px 20px;
+            padding: 40px 20px 10px;
         }
 
         h1 {
             font-size: 42px;
-            margin: 0 auto 10px auto;
-            display: inline-block;
+            margin: 0 auto 10px;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
+            display: flex;
+            gap: 20px;
         }
 
         .box {
+            flex: 1;
             background: rgba(255,255,255,0.1);
             padding: 25px;
             border-radius: 12px;
-            margin-top: 20px;
         }
 
         .downloads-section {
@@ -64,11 +65,18 @@
             text-decoration: none;
             color: white;
             text-align: center;
-            transition: opacity 0.3s;
+            transition: opacity .3s;
         }
 
-        .download-btn:hover {
-            opacity: 0.9;
+            .download-btn:hover {
+                opacity: .9;
+            }
+
+        .download-desc {
+            display: block;
+            font-size: 12px;
+            opacity: .8;
+            margin-top: 3px;
         }
 
         .btn-android {
@@ -77,7 +85,7 @@
         }
 
         .btn-ios {
-            background: #555555;
+            background: #555;
         }
 
         .btn-windows {
@@ -89,7 +97,7 @@
         }
 
         .btn-macos {
-            background: #555555;
+            background: #555;
         }
 
         .btn-web {
@@ -107,17 +115,21 @@
         footer {
             margin-top: 30px;
             padding: 20px;
-            opacity: 0.8;
+            opacity: .8;
             font-size: 14px;
         }
 
-        /* Responsive: stack columns on small screens */
-        @media (max-width: 700px) {
-            .lang-select {
-                top: 12px;
-                right: 12px;
+        /* 手機版 */
+
+        @media (max-width:700px) {
+
+            .container {
+                flex-direction: column;
             }
-            h1 { font-size: 30px; }
+
+            h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
@@ -125,28 +137,141 @@
 <body>
 
     <header>
-        <h1 id="title">BURNING CLOUD NIGHT</h1>
+        <h1>BURNING CLOUD NIGHT</h1>
     </header>
 
     <div class="container">
 
-        <!-- 下載按鈕 -->
+        <!-- Download -->
+
         <div class="box downloads-section">
-            <div class="downloads-title" id="downloadsTitle">Download</div>
+
+            <div class="downloads-title" id="downloadsTitle">Normal Download</div>
+
             <div class="download-list">
-                <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317" class="download-btn btn-android">Android</a>
-                <a href="https://testflight.apple.com/join/AewCypAu" class="download-btn btn-ios">iOS</a>
-                <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317" class="download-btn btn-windows">Windows</a>
-                <a href="https://testflight.apple.com/join/AewCypAu" class="download-btn btn-macos">macOS</a>
-                <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317" class="download-btn btn-linux">Linux</a>
-                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=b810fe087cd7364dc966daa3de912a42&invitationCode=widJa6twIz" class="download-btn btn-harmonyos">HarmonyOS NEXT</a>
-                <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night" class="download-btn btn-web">WebGL (Unity Play)</a>
-                <a href="ms-windows-store://pdp/?productid=9NNNWCFMQCXG" class="download-btn btn-uwp">Microsoft Store (UWP)</a>
+
+                <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317" class="download-btn btn-android">
+                    Android
+                    <span class="download-desc" id="androidDesc">Ctfile Android 5.1+</span>
+                </a>
+
+                <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317" class="download-btn btn-windows">
+                    Windows
+                    <span class="download-desc" id="windowsDesc">Ctfile Windows 7 SP1+</span>
+                </a>
+
+                <a href="https://url41.ctfile.com/d/23081741-65202382-ae52cb?p=8317" class="download-btn btn-macos">
+                    macOS
+                    <span class="download-desc" id="macDesc">Ctfile macOS 12+</span>
+                </a>
+
+                <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317" class="download-btn btn-linux">
+                    Linux
+                    <span class="download-desc" id="linuxDesc">Ctfile Linux x64 Ubuntu 18.04+ CentOS 7+</span>
+                </a>
+
+                <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night" class="download-btn btn-web">
+                    WebGL
+                    <span class="download-desc" id="webDesc">Play in Browser at Unity Play</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Direct Download -->
+
+        <div class="box downloads-section">
+
+            <div class="downloads-title" id="directTitle">
+                Latest Version Faster Download
+            </div>
+
+            <div class="download-list">
+
+                <a href="ms-windows-store://pdp/?productid=9NNNWCFMQCXG" class="download-btn btn-uwp">
+                    Microsoft Store
+                    <span class="download-desc" id="uwpDesc">Windows 10 PC/Mobile/Xbox 10240+</span>
+                </a>
+
+                <a href="https://testflight.apple.com/join/AewCypAu" class="download-btn btn-ios">
+                    iOS
+                    <span class="download-desc" id="iosDesc">TestFlight iOS/iPadOS 13+</span>
+                </a>
+
+                <a href="#" class="download-btn btn-macos">
+                    macOS
+                    <span class="download-desc" id="directMac">Ctfile Direct Link</span>
+                </a>
+
+                <a href="#" class="download-btn btn-linux">
+                    Linux
+                    <span class="download-desc" id="directLinux">Ctfile Direct Link</span>
+                </a>
+
+                <a href="#" class="download-btn btn-windows">
+                    Windows
+                    <span class="download-desc" id="directWin">Ctfile Direct Link</span>
+                </a>
+
+                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=b810fe087cd7364dc966daa3de912a42&invitationCode=widJa6twIz" class="download-btn btn-harmonyos">
+                    HarmonyOS NEXT
+                    <span class="download-desc" id="harmonyDesc">Huawei AppGallery HarmonyOS NEXT 5.0.1+</span>
+                </a>
+
             </div>
         </div>
 
     </div>
 
+    <script>
+
+        const lang = navigator.language || navigator.userLanguage;
+
+        const isZHT = lang.includes("zh-TW") || lang.includes("zh-HK");
+        const isZHS = lang.includes("zh-CN") || lang.includes("zh-SG");
+
+        if (isZHT) {
+
+        document.getElementById("downloadsTitle").innerText="普通下載";
+        document.getElementById("directTitle").innerText="最新版高速下載";
+
+        document.getElementById("androidDesc").innerText="城通網盤 Android 5.1+";
+        document.getElementById("iosDesc").innerText="TestFlight iOS/iPadOS 13+";
+        document.getElementById("windowsDesc").innerText="城通網盤 Windows 7 SP1+";
+        document.getElementById("macDesc").innerText="城通網盤 macOS 12+";
+        document.getElementById("linuxDesc").innerText="城通網盤 Linux x64 Ubuntu 18.04+ CentOS 7+";
+        document.getElementById("harmonyDesc").innerText="華為應用市場 鴻蒙星河版5.0.1+";
+        document.getElementById("webDesc").innerText="Unity Play 瀏覽器遊玩";
+        document.getElementById("uwpDesc").innerText="Windows 10 電腦 / 行動裝置 / Xbox 10240+";
+
+        document.getElementById("directWin").innerText="城通網盤高速直連下載";
+        document.getElementById("directMac").innerText="城通網盤高速直連下載";
+        document.getElementById("directLinux").innerText="城通網盤高速直連下載";
+        document.documentElement.lang = "zh-Hant";
+        }
+
+        else if (isZHS) {
+
+        document.getElementById("downloadsTitle").innerText="普通下载";
+        document.getElementById("directTitle").innerText="最新版高速下载";
+
+        document.getElementById("androidDesc").innerText="城通网盘 Android 5.1+";
+        document.getElementById("iosDesc").innerText="TestFlight iOS/iPadOS 13+";
+        document.getElementById("windowsDesc").innerText="城通网盘 Windows 7 SP1+";
+        document.getElementById("macDesc").innerText="城通网盘 macOS 12+";
+        document.getElementById("linuxDesc").innerText="城通网盘 Linux x64 Ubuntu 18.04+ CentOS 7+";
+        document.getElementById("harmonyDesc").innerText="华为应用市场 鸿蒙星河版5.0.1+";
+        document.getElementById("webDesc").innerText="Unity Play 浏览器游玩";
+        document.getElementById("uwpDesc").innerText="Windows 10 电脑 / 移动设备 / Xbox 10240+";
+
+        document.getElementById("directWin").innerText="城通网盘高速直链下载";
+        document.getElementById("directMac").innerText="城通网盘高速直链下载";
+        document.getElementById("directLinux").innerText="城通网盘高速直链下载";
+        document.documentElement.lang = "zh-Hans";
+        }
+
+
+    </script>
 
 </body>
 </html>
