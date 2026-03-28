@@ -54,7 +54,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 300px;
+            max-width: 400px;
         }
 
         .download-btn {
@@ -135,7 +135,7 @@
 
         /* 手機版 */
 
-        @media (max-width:900px) {
+        @media (max-width:1080px) {
 
             .container {
                 flex-direction: column;
@@ -173,7 +173,7 @@
                    class="download-btn btn-uwp"
                    data-platform="windows">
                     UWP (Microsoft Store)
-                    <span class="download-desc uwpDesc">Windows 10 PC/Mobile/Xbox</span>
+                    <span class="download-desc uwpDesc">Windows 10 10240+ PC/Mobile/Xbox</span>
                 </a>
 
                 <a href="https://testflight.apple.com/join/AewCypAu"
@@ -288,7 +288,7 @@
         // ===== 語言 =====
         if (isZHT) {
         setTextByClass("webDesc", "在瀏覽器上玩");
-        setTextByClass("uwpDesc", "Windows 10 電腦/行動裝置/Xbox");
+        setTextByClass("uwpDesc", "Windows 10 10240+ 電腦/行動裝置/Xbox");
         setTextByClass("harmonyDesc", "鴻蒙 NEXT 5.0.1+");
         setTextByClass("androidDesc", "安卓 5.1+");
 
@@ -298,7 +298,7 @@
         }
         else if (isZHS) {
         setTextByClass("webDesc", "在浏览器上游玩");
-        setTextByClass("uwpDesc", "Windows 10 电脑/移动装置/Xbox");
+        setTextByClass("uwpDesc", "Windows 10 10240+ 电脑/移动装置/Xbox");
         setTextByClass("harmonyDesc", "鸿蒙 NEXT 5.0.1+");
         setTextByClass("androidDesc", "安卓 5.1+");
 
