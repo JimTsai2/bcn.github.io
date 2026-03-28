@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             display: flex;
@@ -84,12 +84,13 @@
         }
 
         .btn-android {
-            background: #3ddc84;
+            background: #34A853;
             color: black;
         }
 
         .btn-ios {
-            background: #555;
+            background: #CCC;
+            color: black;
         }
 
         .btn-windows {
@@ -97,15 +98,17 @@
         }
 
         .btn-linux {
-            background: #ff9800;
+            background: #ffcc33;
+            color: black;
         }
 
         .btn-macos {
-            background: #555;
+            background: #CCC;
+            color: black;
         }
 
         .btn-web {
-            background: #ff9800;
+            background: #555;
         }
 
         .btn-harmonyos {
@@ -123,9 +126,16 @@
             font-size: 14px;
         }
 
+        .recommend {
+            box-shadow: 0 0 15px rgba(255,255,255,0.8);
+            transform: scale(1.05);
+            font-weight: bold;
+            border: 2px solid white;
+        }
+
         /* 手機版 */
 
-        @media (max-width:700px) {
+        @media (max-width:900px) {
 
             .container {
                 flex-direction: column;
@@ -146,80 +156,112 @@
 
     <div class="container">
 
-        <!-- Download -->
-
+        <!-- 平台 / 網站下載 -->
         <div class="box downloads-section">
-
-            <div class="downloads-title" id="downloadsTitle">Normal Download</div>
+            <div class="downloads-title" id="platformTitle">App Platform Download / Web</div>
 
             <div class="download-list">
 
-                <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317" class="download-btn btn-android">
-                    Android
-                    <span class="download-desc" id="androidDesc">Ctfile Android 5.1+</span>
+                <a href="https://apkpure.com/p/com.FireCloudStudio.BURNINGCLOUDNIGHT"
+                   class="download-btn btn-android"
+                   data-platform="android">
+                    Android (APKPure)
+                    <span class="download-desc androidDesc">Android 5.1+</span>
                 </a>
 
-                <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317" class="download-btn btn-windows">
-                    Windows
-                    <span class="download-desc" id="windowsDesc">Ctfile Windows 7 SP1+</span>
+                <a href="ms-windows-store://pdp/?productid=9NNNWCFMQCXG"
+                   class="download-btn btn-uwp"
+                   data-platform="windows">
+                    UWP (Microsoft Store)
+                    <span class="download-desc uwpDesc">Windows 10 PC/Mobile/Xbox</span>
                 </a>
 
-                <a href="https://url41.ctfile.com/d/23081741-65202382-ae52cb?p=8317" class="download-btn btn-macos">
-                    macOS
-                    <span class="download-desc" id="macDesc">Ctfile macOS 12+</span>
+                <a href="https://testflight.apple.com/join/AewCypAu"
+                   class="download-btn btn-ios"
+                   data-platform="ios">
+                    iOS (TestFlight)
+                    <span class="download-desc iosDesc">iOS</span>
                 </a>
 
-                <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317" class="download-btn btn-linux">
-                    Linux
-                    <span class="download-desc" id="linuxDesc">Ctfile Linux x64 Ubuntu 18.04+ CentOS 7+</span>
+                <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night"
+                   class="download-btn btn-web"
+                    data-platform="web">
+                    WebGL (Unity Play)
+                    <span class="download-desc webDesc">Play in Browser</span>
                 </a>
 
-                <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night" class="download-btn btn-web">
-                    WebGL
-                    <span class="download-desc" id="webDesc">Play in Browser at Unity Play</span>
+                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=b810fe087cd7364dc966daa3de912a42&invitationCode=5O3pXuiNapH"
+                   class="download-btn btn-harmonyos"
+                   data-platform="harmony">
+                    HarmonyOS NEXT (Huawei AppGallery)
+                    <span class="download-desc harmonyDesc">HarmonyOS NEXT 5.0.1+</span>
                 </a>
 
             </div>
         </div>
 
-        <!-- Direct Download -->
-
+        <!-- 城通網盤下載 -->
         <div class="box downloads-section">
-
-            <div class="downloads-title" id="directTitle">
-                Latest Version Faster Download
-            </div>
+            <div class="downloads-title" id="ctTitle">Ctfile Download</div>
 
             <div class="download-list">
 
-                <a href="ms-windows-store://pdp/?productid=9NNNWCFMQCXG" class="download-btn btn-uwp">
-                    Microsoft Store
-                    <span class="download-desc" id="uwpDesc">Windows 10 PC/Mobile/Xbox 10240+</span>
+                <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317"
+                   class="download-btn btn-android"
+                    data-platform="android">
+                    Android
+                    <span class="download-desc androidDesc">Android 5.1+</span>
                 </a>
 
-                <a href="https://testflight.apple.com/join/AewCypAu" class="download-btn btn-ios">
-                    iOS
-                    <span class="download-desc" id="iosDesc">TestFlight iOS/iPadOS 13+</span>
-                </a>
-
-                <a href="https://drfs.ctcontents.com/file/23081741/8698768621/1337a7/BCN%20macOS/BCN%201.4.1%20macOS.dmg" class="download-btn btn-macos">
-                    macOS
-                    <span class="download-desc" id="directMac">Ctfile Direct Link</span>
-                </a>
-
-                <a href="https://drfs.ctcontents.com/file/23081741/8695913578/0d5a25/BCN%20Linux/BCN%201.4.1%20Linux.rar" class="download-btn btn-linux">
-                    Linux
-                    <span class="download-desc" id="directLinux">Ctfile Direct Link</span>
-                </a>
-
-                <a href="https://drfs.ctcontents.com/file/23081741/8695913461/3f08f6/BCN%20Windows/BCN%201.4.1%20Windows.rar" class="download-btn btn-windows">
+                <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317"
+                   class="download-btn btn-windows"
+                    data-platform="windows">
                     Windows
-                    <span class="download-desc" id="directWin">Ctfile Direct Link</span>
+                    <span class="download-desc windowsDesc">Windows 7 SP1+</span>
                 </a>
 
-                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=b810fe087cd7364dc966daa3de912a42&invitationCode=5O3pXuiNapH" class="download-btn btn-harmonyos">
-                    HarmonyOS NEXT
-                    <span class="download-desc" id="harmonyDesc">Huawei AppGallery HarmonyOS NEXT 5.0.1+</span>
+                <a href="https://url41.ctfile.com/d/23081741-65202382-ae52cb?p=8317"
+                   class="download-btn btn-macos"
+                    data-platform="macos">
+                    macOS
+                    <span class="download-desc macDesc">macOS 12+</span>
+                </a>
+
+                <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317"
+                   class="download-btn btn-linux"
+                    data-platform="linux">
+                    Linux
+                    <span class="download-desc linuxDesc">Ubuntu 18.04+</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 城通網盤直鏈下載 -->
+        <div class="box downloads-section">
+            <div class="downloads-title" id="directTitle">Ctfile Direct Download</div>
+
+            <div class="download-list">
+
+                <a href="https://drfs.ctcontents.com/file/23081741/8695913461/3f08f6/BCN%20Windows/BCN%201.4.1%20Windows.rar"
+                   class="download-btn btn-windows"
+                    data-platform="windows">
+                    Windows
+                    <span class="download-desc directWin">Windows 7 SP1+</span>
+                </a>
+
+                <a href="https://drfs.ctcontents.com/file/23081741/8698768621/1337a7/BCN%20macOS/BCN%201.4.1%20macOS.dmg"
+                   class="download-btn btn-macos"
+                    data-platform="macos">
+                    macOS
+                    <span class="download-desc directMac">macOS 12+</span>
+                </a>
+
+                <a href="https://drfs.ctcontents.com/file/23081741/8695913578/0d5a25/BCN%20Linux/BCN%201.4.1%20Linux.rar"
+                   class="download-btn btn-linux"
+                    data-platform="linux">
+                    Linux
+                    <span class="download-desc directLinux">Ubuntu 18.04+</span>
                 </a>
 
             </div>
@@ -227,54 +269,87 @@
 
     </div>
 
+
     <script>
 
         const lang = navigator.language || navigator.userLanguage;
+        const ua = navigator.userAgent.toLowerCase();
 
         const isZHT = lang.includes("zh-TW") || lang.includes("zh-HK");
         const isZHS = lang.includes("zh-CN") || lang.includes("zh-SG");
 
+        // ===== 翻譯工具 =====
+        function setTextByClass(className, text) {
+        document.querySelectorAll("." + className).forEach(el => {
+        el.innerText = text;
+        });
+        }
+
+        // ===== 語言 =====
         if (isZHT) {
+        setTextByClass("webDesc", "在瀏覽器上玩");
+        setTextByClass("uwpDesc", "Windows 10 電腦/行動裝置/Xbox");
+        setTextByClass("harmonyDesc", "鴻蒙 NEXT 5.0.1+");
+        setTextByClass("androidDesc", "安卓 5.1+");
 
-        document.getElementById("downloadsTitle").innerText="普通下載";
-        document.getElementById("directTitle").innerText="最新版高速下載";
-
-        document.getElementById("androidDesc").innerText="城通網盤 Android 5.1+";
-        document.getElementById("iosDesc").innerText="TestFlight iOS/iPadOS 13+";
-        document.getElementById("windowsDesc").innerText="城通網盤 Windows 7 SP1+";
-        document.getElementById("macDesc").innerText="城通網盤 macOS 12+";
-        document.getElementById("linuxDesc").innerText="城通網盤 Linux x64 Ubuntu 18.04+ CentOS 7+";
-        document.getElementById("harmonyDesc").innerText="華為應用市場 鴻蒙星河版5.0.1+";
-        document.getElementById("webDesc").innerText="Unity Play 瀏覽器遊玩";
-        document.getElementById("uwpDesc").innerText="Windows 10 電腦 / 行動裝置 / Xbox 10240+";
-
-        document.getElementById("directWin").innerText="城通網盤高速直連下載";
-        document.getElementById("directMac").innerText="城通網盤高速直連下載";
-        document.getElementById("directLinux").innerText="城通網盤高速直連下載";
-        document.documentElement.lang = "zh-Hant";
+        document.getElementById("platformTitle").innerText="應用平台下載 / 網站";
+        document.getElementById("ctTitle").innerText="城通網盤下載";
+        document.getElementById("directTitle").innerText="城通網盤直連下載";
         }
-
         else if (isZHS) {
+        setTextByClass("webDesc", "在浏览器上游玩");
+        setTextByClass("uwpDesc", "Windows 10 电脑/移动装置/Xbox");
+        setTextByClass("harmonyDesc", "鸿蒙 NEXT 5.0.1+");
+        setTextByClass("androidDesc", "安卓 5.1+");
 
-        document.getElementById("downloadsTitle").innerText="普通下载";
-        document.getElementById("directTitle").innerText="最新版高速下载";
+        document.getElementById("platformTitle").innerText="应用平台下载 / 网站";
+        document.getElementById("ctTitle").innerText="城通网盘下载";
+        document.getElementById("directTitle").innerText="城通网盘直链下载";
+        }
 
-        document.getElementById("androidDesc").innerText="城通网盘 Android 5.1+";
-        document.getElementById("iosDesc").innerText="TestFlight iOS/iPadOS 13+";
-        document.getElementById("windowsDesc").innerText="城通网盘 Windows 7 SP1+";
-        document.getElementById("macDesc").innerText="城通网盘 macOS 12+";
-        document.getElementById("linuxDesc").innerText="城通网盘 Linux x64 Ubuntu 18.04+ CentOS 7+";
-        document.getElementById("harmonyDesc").innerText="华为应用市场 鸿蒙星河版5.0.1+";
-        document.getElementById("webDesc").innerText="Unity Play 浏览器游玩";
-        document.getElementById("uwpDesc").innerText="Windows 10 电脑 / 移动设备 / Xbox 10240+";
+        // ===== 平台判斷 =====
+        function detectPlatform() {
+        if (/android/.test(ua)) return "android";
+        if (/openharmony/.test(ua)) return "harmony";
+        if (/harmony/.test(ua)) return "harmony"; // 未來可能出現
+        if (/iphone|ipad|ipod/.test(ua)) return "ios";
+        if (/windows/.test(ua)) return "windows";
+        if (/mac/.test(ua)) return "macos";
+        if (/linux/.test(ua)) return "linux";
+        return "web";
+        }
 
-        document.getElementById("directWin").innerText="城通网盘高速直链下载";
-        document.getElementById("directMac").innerText="城通网盘高速直链下载";
-        document.getElementById("directLinux").innerText="城通网盘高速直链下载";
-        document.documentElement.lang = "zh-Hans";
+        // ===== 高亮推薦 =====
+        function highlightRecommended() {
+        const platform = detectPlatform();
+
+        let targets = document.querySelectorAll(
+        `.download-btn[data-platform="${platform}"]`
+        );
+
+        // fallback
+        if (targets.length === 0) {
+        targets = document.querySelectorAll(
+        `.download-btn[data-platform="web"]`
+        );
+        }
+
+        targets.forEach(target => {
+        target.classList.add("recommend");
+        });
+
+        // 滾動到第一個
+        if (targets.length > 0) {
+        targets[0].scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+        });
+        }
         }
 
 
+        // 執行
+        highlightRecommended();
     </script>
 
 </body>
