@@ -28,20 +28,29 @@
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            display: flex;
+            display: -ms-grid;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-gap: 20px;
             gap: 20px;
         }
 
         .box {
-            flex: 1;
             background: rgba(255,255,255,0.1);
             padding: 25px;
             border-radius: 12px;
         }
 
         .downloads-section {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
         }
 
@@ -51,7 +60,12 @@
         }
 
         .download-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
             width: 100%;
             max-width: 400px;
@@ -64,6 +78,7 @@
             text-decoration: none;
             color: white;
             text-align: center;
+            -webkit-transition: opacity .3s;
             transition: opacity .3s;
             margin-top: 10px;
         }
@@ -127,20 +142,16 @@
         }
 
         .recommend {
+            -webkit-box-shadow: 0 0 15px rgba(255,255,255,0.8);
             box-shadow: 0 0 15px rgba(255,255,255,0.8);
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
             transform: scale(1.05);
             font-weight: bold;
             border: 2px solid white;
         }
 
-        /* 手機版 */
-
-        @media (max-width:1080px) {
-
-            .container {
-                flex-direction: column;
-            }
-
+        @media (max-width: 600px) {
             h1 {
                 font-size: 30px;
             }
@@ -185,7 +196,7 @@
 
                 <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night"
                    class="download-btn btn-web"
-                    data-platform="web">
+                   data-platform="web">
                     WebGL (Unity Play)
                     <span class="download-desc webDesc">Play in Browser</span>
                 </a>
@@ -208,28 +219,28 @@
 
                 <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317"
                    class="download-btn btn-android"
-                    data-platform="android">
+                   data-platform="android">
                     Android
                     <span class="download-desc androidDesc">Android 5.1+</span>
                 </a>
 
                 <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317"
                    class="download-btn btn-windows"
-                    data-platform="windows">
+                   data-platform="windows">
                     Windows
                     <span class="download-desc windowsDesc">Windows 7 SP1+</span>
                 </a>
 
                 <a href="https://url41.ctfile.com/d/23081741-65202382-ae52cb?p=8317"
                    class="download-btn btn-macos"
-                    data-platform="macos">
+                   data-platform="macos">
                     macOS
                     <span class="download-desc macDesc">macOS 12+</span>
                 </a>
 
                 <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317"
                    class="download-btn btn-linux"
-                    data-platform="linux">
+                   data-platform="linux">
                     Linux
                     <span class="download-desc linuxDesc">Ubuntu 18.04+</span>
                 </a>
@@ -245,21 +256,21 @@
 
                 <a href="https://drfs.ctcontents.com/file/23081741/8695913461/3f08f6/BCN%20Windows/BCN%201.4.1%20Windows.rar"
                    class="download-btn btn-windows"
-                    data-platform="windows">
+                   data-platform="windows">
                     Windows
                     <span class="download-desc directWin">Windows 7 SP1+</span>
                 </a>
 
                 <a href="https://drfs.ctcontents.com/file/23081741/8698768621/1337a7/BCN%20macOS/BCN%201.4.1%20macOS.dmg"
                    class="download-btn btn-macos"
-                    data-platform="macos">
+                   data-platform="macos">
                     macOS
                     <span class="download-desc directMac">macOS 12+</span>
                 </a>
 
                 <a href="https://drfs.ctcontents.com/file/23081741/8695913578/0d5a25/BCN%20Linux/BCN%201.4.1%20Linux.rar"
                    class="download-btn btn-linux"
-                    data-platform="linux">
+                   data-platform="linux">
                     Linux
                     <span class="download-desc directLinux">Ubuntu 18.04+</span>
                 </a>
@@ -272,84 +283,92 @@
 
     <script>
 
-        const lang = navigator.language || navigator.userLanguage;
-        const ua = navigator.userAgent.toLowerCase();
+        var lang = navigator.language || navigator.userLanguage;
+        var ua = navigator.userAgent.toLowerCase();
 
-        const isZHT = lang.includes("zh-TW") || lang.includes("zh-HK");
-        const isZHS = lang.includes("zh-CN") || lang.includes("zh-SG");
+        var isZHT = lang.indexOf("zh-TW") !== -1 || lang.indexOf("zh-HK") !== -1;
+        var isZHS = lang.indexOf("zh-CN") !== -1 || lang.indexOf("zh-SG") !== -1;
+
+        // ===== html lang 屬性 =====
+        if (isZHT) {
+        document.documentElement.lang = "zh-Hant";
+        } else if (isZHS) {
+        document.documentElement.lang = "zh-Hans";
+        } else {
+        document.documentElement.lang = lang || "en";
+        }
 
         // ===== 翻譯工具 =====
         function setTextByClass(className, text) {
-        document.querySelectorAll("." + className).forEach(el => {
-        el.innerText = text;
-        });
+        var els = document.querySelectorAll("." + className);
+        for (var i = 0; i < els.length; i++) {
+        els[i].innerText = text;
+        }
         }
 
         // ===== 語言 =====
         if (isZHT) {
-        setTextByClass("webDesc", "在瀏覽器上玩");
-        setTextByClass("uwpDesc", "Windows 10 10240+ 電腦/行動裝置/Xbox");
+        setTextByClass("webDesc",     "在瀏覽器上玩");
+        setTextByClass("uwpDesc",     "Windows 10 10240+ 電腦/行動裝置/Xbox");
         setTextByClass("harmonyDesc", "鴻蒙 NEXT 5.0.1+");
         setTextByClass("androidDesc", "安卓 5.1+");
+        setTextByClass("iosDesc",     "iOS/iPadOS 13+");
+        setTextByClass("windowsDesc", "Windows 7 SP1+");
+        setTextByClass("macDesc",     "macOS 12+");
+        setTextByClass("linuxDesc",   "Ubuntu 18.04+");
 
-        document.getElementById("platformTitle").innerText="應用平台下載 / 網站";
-        document.getElementById("ctTitle").innerText="城通網盤下載";
-        document.getElementById("directTitle").innerText="城通網盤直連下載";
+        document.getElementById("platformTitle").innerText = "應用平台下載 / 網站";
+        document.getElementById("ctTitle").innerText       = "城通網盤下載";
+        document.getElementById("directTitle").innerText   = "城通網盤直連下載";
         }
         else if (isZHS) {
-        setTextByClass("webDesc", "在浏览器上游玩");
-        setTextByClass("uwpDesc", "Windows 10 10240+ 电脑/移动装置/Xbox");
+        setTextByClass("webDesc",     "在浏览器上游玩");
+        setTextByClass("uwpDesc",     "Windows 10 10240+ 电脑/移动装置/Xbox");
         setTextByClass("harmonyDesc", "鸿蒙 NEXT 5.0.1+");
         setTextByClass("androidDesc", "安卓 5.1+");
+        setTextByClass("iosDesc",     "iOS/iPadOS 13+");
+        setTextByClass("windowsDesc", "Windows 7 SP1+");
+        setTextByClass("macDesc",     "macOS 12+");
+        setTextByClass("linuxDesc",   "Ubuntu 18.04+");
 
-        document.getElementById("platformTitle").innerText="应用平台下载 / 网站";
-        document.getElementById("ctTitle").innerText="城通网盘下载";
-        document.getElementById("directTitle").innerText="城通网盘直链下载";
+        document.getElementById("platformTitle").innerText = "应用平台下载 / 网站";
+        document.getElementById("ctTitle").innerText       = "城通网盘下载";
+        document.getElementById("directTitle").innerText   = "城通网盘直链下载";
         }
 
         // ===== 平台判斷 =====
         function detectPlatform() {
-        if (/android/.test(ua)) return "android";
-        if (/openharmony/.test(ua)) return "harmony";
-        if (/harmony/.test(ua)) return "harmony"; // 未來可能出現
-        if (/iphone|ipad|ipod/.test(ua)) return "ios";
-        if (/windows/.test(ua)) return "windows";
-        if (/mac/.test(ua)) return "macos";
-        if (/linux/.test(ua)) return "linux";
+        if (/android/.test(ua))             return "android";
+        if (/openharmony|harmony/.test(ua)) return "harmony";
+        if (/iphone|ipad|ipod/.test(ua))    return "ios";
+        if (/windows/.test(ua))             return "windows";
+        if (/mac/.test(ua))                 return "macos";
+        if (/linux/.test(ua))               return "linux";
         return "web";
         }
 
         // ===== 高亮推薦 =====
         function highlightRecommended() {
-        const platform = detectPlatform();
-
-        let targets = document.querySelectorAll(
-        `.download-btn[data-platform="${platform}"]`
-        );
+        var platform = detectPlatform();
+        var targets = document.querySelectorAll('.download-btn[data-platform="' + platform + '"]');
 
         // fallback
         if (targets.length === 0) {
-        targets = document.querySelectorAll(
-        `.download-btn[data-platform="web"]`
-        );
+        targets = document.querySelectorAll('.download-btn[data-platform="web"]');
         }
 
-        targets.forEach(target => {
-        target.classList.add("recommend");
-        });
+        for (var i = 0; i < targets.length; i++) {
+        targets[i].classList.add("recommend");
+        }
 
         // 滾動到第一個
         if (targets.length > 0) {
-        targets[0].scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-        });
+        targets[0].scrollIntoView({ behavior: "smooth", block: "center" });
         }
         }
 
-
-        // 執行
         highlightRecommended();
+
     </script>
 
 </body>
