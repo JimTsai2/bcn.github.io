@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,12 @@
         }
 
         h1 {
-            font-size: 35px;
+            font-size: 30px;
             margin: 0 auto 15px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 450px;
             margin: 20px auto;
             padding: 0 15px;
         }
@@ -39,13 +39,49 @@
 
         .downloads-title {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
-        .download-list {
+        /* 系統需求區塊 */
+        .sysreq-table {
             width: 100%;
             max-width: 420px;
+            margin: 0 auto 20px;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+            .sysreq-table caption {
+                font-size: 12px;
+                opacity: 0.6;
+                text-align: left;
+                padding: 6px 12px 4px;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            .sysreq-table td {
+                padding: 6px 12px;
+                text-align: left;
+                border-top: 1px solid rgba(255,255,255,0.08);
+            }
+
+                .sysreq-table td:first-child {
+                    opacity: 0.55;
+                    width: 80px;
+                }
+
+            .sysreq-table tr:first-child td {
+                border-top: none;
+            }
+
+        .download-list {
+            width: 100%;
+            max-width: 320px;
             margin: 0 auto;
         }
 
@@ -58,6 +94,7 @@
             color: white;
             text-align: center;
             font-size: 16px;
+            font-weight: 500;
             background: #555;
             transition: opacity 0.3s;
         }
@@ -77,46 +114,31 @@
             margin-top: 4px;
         }
 
-        /* 按鈕顏色 */
-        .btn-android {
-            background: #34A853;
-            color: #000;
-        }
-
-        .btn-ios {
-            background: #CCC;
-            color: #000;
-        }
-
-        .btn-windows,
         .btn-uwp {
             background: #0078d4;
-        }
-
-        .btn-linux {
-            background: #ffcc33;
-            color: #000;
-        }
-
-        .btn-macos {
-            background: #CCC;
-            color: #000;
-        }
-
-        .btn-web {
-            background: #555;
         }
 
         .btn-harmonyos {
             background: #da291c;
         }
 
-        /* 推薦高亮（老舊瀏覽器降級） */
+        .btn-ctfile {
+            background: #147cff;
+        }
+
+        .btn-gdrive {
+            background: #4688F4;
+        }
+
+        .btn-quark {
+            background: #0d53ff;
+        }
+
         .recommend {
             border: 3px solid #fff;
             box-shadow: 0 0 12px rgba(255,255,255,0.7);
             font-weight: bold;
-            transform: scale(1.03); /* 新瀏覽器才有效 */
+            transform: scale(1.03);
         }
 
         footer {
@@ -126,20 +148,7 @@
             font-size: 14px;
         }
 
-        /* 響應式調整 */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 28px;
-            }
 
-            .downloads-title {
-                font-size: 22px;
-            }
-
-            .box {
-                padding: 20px 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -148,100 +157,107 @@
     </header>
 
     <div class="container">
-
+        <table class="sysreq-table">
+            <caption class="sysreq-caption">System Requirements</caption>
+            <tr><td>Android</td><td>Android 5.1+</td></tr>
+            <tr><td>Windows</td><td>Windows 7 SP1+</td></tr>
+            <tr><td>UWP</td><td>Windows 10 10240+ (PC / Mobile / Xbox)</td></tr>
+            <tr><td>iOS</td><td>iOS/iPadOS 13+</td></tr>
+            <tr><td>macOS</td><td>macOS 12+</td></tr>
+            <tr><td>Linux</td><td>Ubuntu 18.04+ / CentOS 7+</td></tr>
+            <tr><td>HarmonyOS</td><td>HarmonyOS NEXT 5.0.1+</td></tr>
+            <tr>
+                <td>WebGL</td>
+                <td id="webglDesc">
+                    WebGL 2.0 capable/HTML 5 standards compliant/64-bit/WebAssembly capable
+                </td>
+            </tr>
+        </table>
         <!-- 平台下載 -->
         <div class="box">
             <div class="downloads-title" id="platformTitle">App Platform Download / Web</div>
+
             <div class="download-list">
                 <a href="https://apkpure.com/p/com.FireCloudStudio.BURNINGCLOUDNIGHT"
-                   class="download-btn btn-android" data-platform="android">
-                    Android (APKPure)
-                    <span class="download-desc">Android 5.1+</span>
+                   id="btnAndroid"
+                   class="download-btn" style="background:#34A853;color:#000;" data-platform="android">
+                    Android
+                    <span class="download-desc" id="descAndroid">APKPure (Cannot be used in mainland China)</span>
                 </a>
                 <a href="ms-windows-store://pdp/?productid=9NNNWCFMQCXG"
+                   id="btnUWP"
                    class="download-btn btn-uwp" data-platform="windows">
-                    UWP (Microsoft Store)
-                    <span class="download-desc">Windows 10 10240+ PC/Mobile/Xbox</span>
+                    Universal Windows Platform
+                    <span class="download-desc" id="descUWP">Microsoft Store</span>
                 </a>
                 <a href="https://testflight.apple.com/join/AewCypAu"
-                   class="download-btn btn-ios" data-platform="ios">
-                    iOS (TestFlight)
-                    <span class="download-desc">iOS</span>
+                   class="download-btn" style="background:#CCC;color:#000;" data-platform="ios">
+                    iOS
+                    <span class="download-desc">TestFlight</span>
                 </a>
                 <a href="https://play.unity.com/en/games/39600486-a3a6-4bbc-a43e-9e44efab66ef/burning-cloud-night"
-                   class="download-btn btn-web" data-platform="web">
-                    WebGL (Unity Play)
-                    <span class="download-desc">Play in Browser</span>
+                   class="download-btn" style="background:#555;" data-platform="web">
+                    WebGL
+                    <span class="download-desc">Unity Play</span>
                 </a>
-                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=69d947dc460ee17290ee68d8d3c3ce17&invitationCode=5O3pXuiNapH"
+                <a href="https://appgallery.huawei.com/link/invite-test-wap?taskId=5e9d88084467acb19aba574afde37458&invitationCode=5O3pXuiNapH"
+                   id="btnHarmony"
                    class="download-btn btn-harmonyos" data-platform="harmony">
-                    HarmonyOS (Huawei AppGallery)
-                    <span class="download-desc">HarmonyOS NEXT 5.0.1+</span>
+                    HarmonyOS
+                    <span class="download-desc" id="descHarmony">Huawei AppGallery</span>
                 </a>
             </div>
         </div>
 
         <!-- 城通網盤下載 -->
         <div class="box">
-            <div class="downloads-title" id="ctTitle">Ctfile Download</div>
+            <div class="downloads-title" id="ctTitle">CTFile Download</div>
+
             <div class="download-list">
                 <a href="https://url41.ctfile.com/d/23081741-65204833-dca1c3?p=8317"
-                   class="download-btn btn-android" data-platform="android">
-                    Android
-                    <span class="download-desc">Android 5.1+</span>
-                </a>
+                   class="download-btn btn-ctfile" data-platform="android">Android</a>
                 <a href="https://url41.ctfile.com/d/23081741-65202385-927061?p=8317"
-                   class="download-btn btn-windows" data-platform="windows">
-                    Windows
-                    <span class="download-desc">Windows 7 SP1+</span>
-                </a>
+                   class="download-btn btn-ctfile" data-platform="windows">Windows</a>
                 <a href="https://url41.ctfile.com/d/23081741-65202382-ae52cb?p=8317"
-                   class="download-btn btn-macos" data-platform="macos">
-                    macOS
-                    <span class="download-desc">macOS 12+</span>
-                </a>
+                   class="download-btn btn-ctfile" data-platform="macos">macOS</a>
                 <a href="https://url41.ctfile.com/d/23081741-65202397-a40f80?p=8317"
-                   class="download-btn btn-linux" data-platform="linux">
-                    Linux
-                    <span class="download-desc">Ubuntu 18.04+ / CentOS 7+</span>
-                </a>
+                   class="download-btn btn-ctfile" data-platform="linux">Linux</a>
             </div>
         </div>
 
-        <!-- 城通網盤直鏈下載 -->
+        <!-- Google 雲端硬碟下載 -->
         <div class="box">
-            <div class="downloads-title" id="directTitle">Ctfile Direct Download</div>
+            <div class="downloads-title" id="gdriveTitle">Google Drive Download</div>
             <div class="download-list">
-                <a href="https://drfs.ctcontents.com/file/23081741/8789968444/d2465b/BCN%20Android/BCN%201.5.3%20Android.rar"
-                   class="download-btn btn-android" data-platform="android">
-                    Android
-                    <span class="download-desc">Android 5.1+</span>
-                </a>
-                <a href="https://drfs.ctcontents.com/file/23081741/8789967913/5e81d9/BCN%20Windows/BCN%201.5.3%20Windows.rar"
-                   class="download-btn btn-windows" data-platform="windows">
-                    Windows
-                    <span class="download-desc">Windows 7 SP1+</span>
-                </a>
-                <a href="https://drfs.ctcontents.com/file/23081741/8789968276/19614f/BCN%20macOS/BCN%201.5.3%20macOS.dmg"
-                   class="download-btn btn-macos" data-platform="macos">
-                    macOS
-                    <span class="download-desc">macOS 12+</span>
-                </a>
-                <a href="https://drfs.ctcontents.com/file/23081741/8789968096/c51147/BCN%20Linux/BCN%201.5.3%20Linux.rar"
-                   class="download-btn btn-linux" data-platform="linux">
-                    Linux
-                    <span class="download-desc">Ubuntu 18.04+ / CentOS 7+</span>
-                </a>
+                <a href="#" class="download-btn btn-gdrive" data-platform="android">Android</a>
+                <a href="#" class="download-btn btn-gdrive" data-platform="windows">Windows</a>
+                <a href="#" class="download-btn btn-gdrive" data-platform="macos">macOS</a>
+                <a href="#" class="download-btn btn-gdrive" data-platform="linux">Linux</a>
             </div>
         </div>
+
+        <!-- 夸克網盤下載 -->
+        <div class="box">
+            <div class="downloads-title" id="quarkTitle">Quark Drive Download</div>
+            <div class="download-list">
+                <a href="https://pan.quark.cn/s/caaa474f4440"
+                   class="download-btn btn-quark" data-platform="android">Android</a>
+                <a href="https://pan.quark.cn/s/1e6e337b9b28"
+                   class="download-btn btn-quark" data-platform="windows">Windows</a>
+                <a href="https://pan.quark.cn/s/4d7827980b11"
+                   class="download-btn btn-quark" data-platform="macos">macOS</a>
+                <a href="https://pan.quark.cn/s/bb2d3ac51856"
+                   class="download-btn btn-quark" data-platform="linux">Linux</a>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        BURNING CLOUD NIGHT © 2026 FireCloud Studio
+        BURNING CLOUD NIGHT &copy; 2026 FireCloud Studio
     </footer>
 
     <script>
-        // 語言偵測與翻譯（相容舊瀏覽器）
         var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
         var ua = navigator.userAgent.toLowerCase();
 
@@ -255,16 +271,24 @@
 
         if (isZHT) {
         setText("platformTitle", "應用平台下載 / 網站");
+        setText("descAndroid", "APKPure（中國大陸無法使用）");
         setText("ctTitle", "城通網盤下載");
-        setText("directTitle", "城通網盤直連下載");
-        }
-        else if (isZHS) {
+        setText("gdriveTitle", "Google 雲端硬碟下載");
+        setText("quarkTitle", "夸克網盤下載");
+        setText("webglDesc", "支援 WebGL 2.0/符合 HTML 5 標準/64 位元/支援 WebAssembly");
+        var captions = document.querySelectorAll('.sysreq-caption');
+        for (var i = 0; i < captions.length; i++) captions[i].innerHTML = "系統需求";
+        } else if (isZHS) {
         setText("platformTitle", "应用平台下载 / 网站");
+        setText("descAndroid", "APKPure（中国大陆无法使用）");
         setText("ctTitle", "城通网盘下载");
-        setText("directTitle", "城通网盘直链下载");
+        setText("gdriveTitle", "Google 云端硬盘下载");
+        setText("quarkTitle", "夸克网盘下载");
+        setText("webglDesc", "支持 WebGL 2.0/符合 HTML 5 标准/64 位/支持 WebAssembly");
+        var captions = document.querySelectorAll('.sysreq-caption');
+        for (var i = 0; i < captions.length; i++) captions[i].innerHTML = "系统需求";
         }
 
-        // 平台偵測與推薦高亮（相容舊瀏覽器）
         function detectPlatform() {
         if (/harmony|openharmony/.test(ua)) return "harmony";
         if (/android/.test(ua)) return "android";
@@ -278,17 +302,12 @@
         function highlightRecommended() {
         var platform = detectPlatform();
         var links = document.querySelectorAll('.download-btn[data-platform="' + platform + '"]');
-
-        // 如果沒找到對應平台，預設推薦 Web
         if (links.length === 0) {
         links = document.querySelectorAll('.download-btn[data-platform="web"]');
         }
-
         for (var i = 0; i < links.length; i++) {
         links[i].className += " recommend";
         }
-
-        // 滾動到推薦項目（相容舊瀏覽器）
         if (links.length > 0) {
         setTimeout(function() {
         links[0].scrollIntoView({ behavior: "smooth", block: "center" });
@@ -296,7 +315,6 @@
         }
         }
 
-        // 頁面載入完畢後執行
         window.onload = highlightRecommended;
     </script>
 </body>
